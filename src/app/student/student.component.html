@@ -1,0 +1,46 @@
+<div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: 50px;
+        background: hsla(181, 58%, 72%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+         <div class="card-body py-5 px-md-5">
+
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+
+    <table  class="table table-bordered" border="1">
+        <tr>
+            <th>StudentId</th>
+            <th>Full Name</th>
+            <th>Class</th>
+            <th>Roll No</th>
+            <th>Maths</th>
+            <th>English</th>
+            <th>Hindi</th>
+            <th>Science</th>
+            <th>Drawing</th>
+            <th>Total marks</th>
+        </tr>
+        <ng-container *ngFor='let stud of students'>
+            <tr>
+            <td>{{stud.Studentid}}</td>
+            <td>{{stud.name1 +" " +stud.name2 +" "+ stud.name3}}</td>
+            <td>{{stud.Class}}</td>
+            <td>{{stud.RollNo}}</td>
+            <td [ngClass]="{'red':stud.Maths<35}">{{stud.Maths}}</td>
+            <td [ngClass]="{'red':stud.English<35}">{{stud.English}}</td>
+            <td [ngClass]="{'red':stud.Hindi<35}">{{stud.Hindi}}</td>
+            <td [ngClass]="{'red':stud.Science<35}">{{stud.Science}}</td>
+            <td [ngClass]="{'red':stud.Drawing<35}">{{stud.Drawing}}</td>
+            <td [ngClass]="stud.Science + stud.English + stud.Hindi + stud.Maths +stud.Drawing >250?{'green':true}:{'red':true}">{{stud.Science + stud.English + stud.Hindi + stud.Maths + stud.Drawing}}</td>
+        </tr>
+    </ng-container>
+        <tr *ngIf="students.length==0">
+            <td colspan="4"> Students record not found</td>
+    
+        </tr>
+    </table>
+    </div>
+          </div>
+         </div>
+</div>

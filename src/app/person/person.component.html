@@ -1,0 +1,116 @@
+<div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: 50px;
+        background: hsla(181, 58%, 72%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+         <div class="card-body py-5 px-md-5">
+
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <h2 class="fw-bold mb-5" style="align-content:center ;">Person Form</h2>
+              <form class="center" #userForm="ngForm"  (ngSubmit)="saveUser(userForm)" >
+                <!-- 3 column grid layout with text inputs for the first, middle and last names -->
+                <div class="row">
+                  <div class="col-md-4 mb-4">
+                    <div class="form-outline">
+                      <mat-form-field appearance="fill">
+                        <mat-label>FirstName</mat-label>
+                        <input required id="firstname" matInput placeholder="Enter FirstName" #fname="ngModel" name="firstname" [(ngModel)]="firstname"/>
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-error *ngIf="fname.invalid">
+                          Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-4">
+                    <div class="form-outline">
+                      <mat-form-field appearance="fill">
+                        <mat-label>MiddleName</mat-label>
+                        <input  id="middlename"  matInput placeholder="Enter MiddleName" #mname="ngModel"  name="Middlename" [(ngModel)]="Middlename" />
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                       
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-4">
+                    <div class="form-outline">
+                      <mat-form-field appearance="fill">
+                        <mat-label>LastName</mat-label>
+                        <input required id="lastname" matInput placeholder="Enter LastName" #lastname1="ngModel" name="Lname" [(ngModel)]="lastname"/>
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-error *ngIf="lastname1.invalid">
+                          Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 mb-4">
+                <div class="form-outline">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Gender</mat-label>
+                    <mat-select selectValidate name="gender" #gender="ngModel" [(ngModel)]="user.gender">
+                  <mat-option *ngFor="let gen of genders" [value]="gen.viewValue">
+                        {{gen.Text}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="gender.errors?.['defaultSelected']">
+                        Gender is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="form-outline">
+                  <input id required="dob" type="date" id="DOB" class="form-control" ml-4  name="Dob"/>
+                  <label class="form-label" for="DOB">Date of Birth</label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="form-outline">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Department</mat-label>
+                        <mat-select selectValidate name="department" #department="ngModel" [(ngModel)]="person.department">
+                      <mat-option *ngFor="let dept of departments" [value]="dept.viewValue">
+                            {{dept.Text}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="department.errors?.['defaultSelected']">
+                            Department is <strong>required</strong>
+                          </mat-error>
+                      </mat-form-field>
+                    
+                </div>
+              </div>
+                </div>  
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Address1</mat-label>
+                        <input type="text" required id="add1" matInput name="Address1" #address="ngModel" [(ngModel)]="add1"/>
+                        <mat-error *ngIf="address.invalid">
+                          Address is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      </div>
+                      </div>
+                      
+
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <div class="example-container">
+                                        <mat-form-field hintLabel="Max 6 characters" appearance="fill">
+                                          <mat-label>Pincode</mat-label>
+                                          <input required id ="pin" matInput  maxlength="6" placeholder="000000" />
+                                        </mat-form-field>
+                                      
+                                </div>
+                            </div>
+
+                </div>
+                </div>
+                <button mat-flat-button color="primary" name="submitbutton" (click)="onclick()">Submit</button>
+            </form>
